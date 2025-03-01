@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attribute_values', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('attribute_id')->constrained()->onDelete('cascade');
-            $table->unsignedBigInteger('entity_id'); // This will reference the project ID
-            $table->string('value');
+        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('client_id');
             $table->timestamps();
         });
     }
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('attribute_values');
+        Schema::dropIfExists('oauth_personal_access_clients');
     }
 };
